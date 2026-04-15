@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFI Bridge — Universal Cross-Chain Bridge & DEX Aggregator | 60+ Chains</title>
+    <meta name="description" content="LIFI Bridge aggregates 20+ bridges and DEX aggregators across 60+ chains. $80B+ volume, 600+ partners. SDK, API, and widget for any-to-any cross-chain swaps.">
+    <link rel="canonical" href="https://lifi-bridge.github.io/">
+    <meta property="og:title" content="LIFI Bridge — Universal Cross-Chain Bridge & DEX Aggregator">
+    <meta property="og:description" content="Any-to-any cross-chain swaps across 60+ chains. 20+ bridges, 20+ DEX aggregators, one integration.">
+    <meta property="og:url" content="https://lifi-bridge.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LIFI Bridge — Cross-Chain Bridge & DEX Aggregator">
+    <meta name="twitter:description" content="60+ chains, 20+ bridges, $80B+ volume. One SDK for universal market access.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FAFAFF;
+            --color-bg-white: #FFFFFF;
+            --color-bg-lavender: #F0EDFF;
+            --color-bg-pink: #FBF0FF;
+            --color-text: #111111;
+            --color-text-secondary: #5C5C7A;
+            --color-indigo: #5B4CDB;
+            --color-indigo-hover: #4A3BC8;
+            --color-indigo-soft: rgba(91,76,219,0.06);
+            --color-indigo-glow: rgba(91,76,219,0.1);
+            --color-pink: #E8B4F8;
+            --color-pink-soft: rgba(232,180,248,0.15);
+            --color-border: #E8E5F0;
+            --color-border-hover: rgba(91,76,219,0.25);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --radius-full: 50px;
+            --shadow-card: 0 2px 16px rgba(91,76,219,0.04);
+            --shadow-hover: 0 8px 32px rgba(91,76,219,0.08);
+            --max-width: 1140px;
+            --spacing-section: 100px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-primary); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,255,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border); }
+        .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+        .nav-logo { font-size: 1.3rem; font-weight: 800; color: var(--color-text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-logo-icon { color: var(--color-indigo); font-size: 1.4rem; }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--color-text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--color-text); }
+        .nav-cta { background: var(--color-indigo); color: #fff; padding: 10px 24px; border-radius: var(--radius-full); font-weight: 700; font-size: 0.88rem; text-decoration: none; transition: all 0.2s; }
+        .nav-cta:hover { background: var(--color-indigo-hover); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--color-text); margin: 5px 0; }
+
+        .hero { padding: 150px 0 100px; background: linear-gradient(180deg, #FAFAFF 0%, #F0EDFF 100%); }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero h1 { font-size: 3.6rem; font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 24px; color: var(--color-text); }
+        .hero p { font-size: 1.1rem; color: var(--color-text-secondary); max-width: 480px; line-height: 1.8; margin-bottom: 36px; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary { background: var(--color-indigo); color: #fff; padding: 15px 36px; border-radius: var(--radius-full); font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; }
+        .btn-primary:hover { background: var(--color-indigo-hover); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+        .btn-outline { background: var(--color-bg-white); color: var(--color-text); padding: 15px 36px; border-radius: var(--radius-full); font-weight: 600; font-size: 1rem; text-decoration: none; border: 1.5px solid var(--color-border); transition: all 0.2s; }
+        .btn-outline:hover { border-color: var(--color-indigo); color: var(--color-indigo); }
+        .hero-visual { background: var(--color-bg-white); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 32px; position: relative; box-shadow: var(--shadow-card); }
+        .hero-flow { display: flex; flex-direction: column; gap: 16px; }
+        .flow-box { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+        .flow-label { font-size: 0.82rem; color: var(--color-text-secondary); font-weight: 500; }
+        .flow-value { font-size: 0.85rem; font-weight: 700; }
+        .flow-arrow { text-align: center; font-size: 1.2rem; color: var(--color-indigo); }
+        .flow-tag { display: inline-block; padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+        .flow-tag.bridge { background: var(--color-indigo-soft); color: var(--color-indigo); }
+        .flow-tag.dex { background: var(--color-pink-soft); color: #9B59B6; }
+
+        section { padding: var(--spacing-section) 0; }
+        .section-label { display: inline-block; color: var(--color-indigo); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+        .section-title { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+        .section-subtitle { font-size: 1.05rem; color: var(--color-text-secondary); max-width: 520px; line-height: 1.7; }
+        .section-header { text-align: center; margin-bottom: 56px; }
+        .section-header .section-subtitle { margin: 0 auto; }
+
+        .stats-strip { background: var(--color-bg-white); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+        .stat-item { text-align: center; padding: 40px 20px; border-right: 1px solid var(--color-border); }
+        .stat-item:last-child { border-right: none; }
+        .stat-value { font-size: 2rem; font-weight: 900; color: var(--color-indigo); }
+        .stat-label { font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 4px; }
+
+        .how-it-works { background: var(--color-bg-white); }
+        .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .how-card { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 36px 28px; transition: all 0.3s; }
+        .how-card:hover { border-color: var(--color-border-hover); box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+        .how-icon { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--color-indigo-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.3rem; }
+        .how-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+        .how-card p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .feature-card { background: var(--color-bg-white); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 32px 28px; display: flex; align-items: flex-start; gap: 18px; transition: all 0.3s; }
+        .feature-card:hover { border-color: var(--color-border-hover); }
+        .feature-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-indigo); flex-shrink: 0; margin-top: 6px; }
+        .feature-card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+        .feature-card p { font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; }
+
+        .chains-section { background: var(--color-bg-white); }
+        .chains-flex { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .chain-pill { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-full); padding: 10px 22px; font-size: 0.85rem; font-weight: 600; transition: all 0.2s; cursor: default; }
+        .chain-pill:hover { border-color: var(--color-indigo); color: var(--color-indigo); }
+
+        .dev-section { background: linear-gradient(135deg, var(--color-bg-lavender) 0%, var(--color-bg-pink) 100%); }
+        .dev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .dev-card { background: var(--color-bg-white); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 36px 28px; text-align: center; transition: all 0.3s; }
+        .dev-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+        .dev-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+        .dev-card p { font-size: 0.88rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px; }
+        .dev-tag { display: inline-block; padding: 6px 16px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; background: var(--color-indigo-soft); color: var(--color-indigo); }
+
+        .faq-list { max-width: 720px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--color-border); }
+        .faq-question { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font-primary); font-size: 1rem; font-weight: 600; color: var(--color-text); text-align: left; }
+        .faq-question::after { content: '+'; font-size: 1.4rem; color: var(--color-indigo); }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer p { padding: 0 0 22px; color: var(--color-text-secondary); font-size: 0.92rem; line-height: 1.7; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+
+        .cta-section { text-align: center; padding: 80px 0; background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-lavender) 100%); }
+        .cta-section h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 16px; }
+        .cta-section p { font-size: 1.05rem; color: var(--color-text-secondary); margin-bottom: 32px; }
+
+        footer { background: var(--color-text); color: rgba(255,255,255,0.5); padding: 56px 0 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand { color: rgba(255,255,255,0.7); }
+        .footer-brand .nav-logo { color: #fff; margin-bottom: 8px; }
+        .footer-brand p { font-size: 0.85rem; line-height: 1.7; max-width: 260px; }
+        .footer-col h4 { color: rgba(255,255,255,0.9); font-size: 0.82rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; margin-bottom: 9px; transition: color 0.2s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; font-size: 0.78rem; }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-visual { display: none; }
+            .hero h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.9rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--color-border); }
+            .how-grid, .dev-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            :root { --spacing-section: 64px; }
+            .nav-links { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--color-bg); flex-direction: column; padding: 20px 24px; gap: 14px; border-bottom: 1px solid var(--color-border); }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .hero { padding: 120px 0 64px; }
+            .hero h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"LIFI Bridge","url":"https://lifi-bridge.github.io/","description":"Universal cross-chain bridge and DEX aggregator connecting 20+ bridges across 60+ chains. $80B+ volume, 600+ integration partners."}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is LI.FI?","acceptedAnswer":{"@type":"Answer","text":"LI.FI is a cross-chain bridge and DEX aggregator connecting 20+ bridges and DEXs across 60+ chains for any-to-any swaps."}},{"@type":"Question","name":"How many chains are supported?","acceptedAnswer":{"@type":"Answer","text":"60+ chains including Ethereum, Solana, Arbitrum, BNB, Base, Polygon, Bitcoin, and more."}},{"@type":"Question","name":"Is LI.FI safe?","acceptedAnswer":{"@type":"Answer","text":"LI.FI uses audited contracts, auto-failover routing, and has processed $80B+ in volume across 100M+ transfers."}}]}
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="https://lifi-bridge.github.io/" class="nav-logo"><span class="nav-logo-icon">&#10004;</span> LI.FI</a>
+        <ul class="nav-links">
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#chains">Chains</a></li>
+            <li><a href="#developers">Developers</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="CTA_LINK" class="nav-cta">Start Integration</a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div>
+                <h1>Universal market access for digital assets</h1>
+                <p>No more market fragmentation. Get best price execution across any DEX and bridge — trade stablecoins, RWAs, and any digital asset across all blockchain ecosystems with a single integration.</p>
+                <div class="hero-buttons">
+                    <a href="CTA_LINK" class="btn-primary">Start Your Integration</a>
+                    <a href="#how" class="btn-outline">See How It Works</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-flow">
+                    <div class="flow-box"><span class="flow-label">Your dApp</span><span class="flow-value">token_x</span></div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div style="display:flex;gap:10px;justify-content:center;">
+                        <span class="flow-tag bridge">Bridge</span>
+                        <span class="flow-tag dex">DEX</span>
+                        <span class="flow-tag bridge">Bridge</span>
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-box"><span class="flow-label">Destination Chain</span><span class="flow-value">token_y</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-strip">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-value">60+</div><div class="stat-label">Supported Chains</div></div>
+            <div class="stat-item"><div class="stat-value">$80B+</div><div class="stat-label">Total Volume</div></div>
+            <div class="stat-item"><div class="stat-value">100M+</div><div class="stat-label">Total Transfers</div></div>
+            <div class="stat-item"><div class="stat-value">600+</div><div class="stat-label">Integration Partners</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works" id="how">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">How It Works</span>
+            <h2 class="section-title">One Integration. Every Chain.</h2>
+            <p class="section-subtitle">LI.FI aggregates bridges and DEXs, finds the optimal route, and handles execution — all through a single SDK call.</p>
+        </div>
+        <div class="how-grid">
+            <div class="how-card">
+                <div class="how-icon">&#128269;</div>
+                <h3>Smart Route Discovery</h3>
+                <p>LI.FI scans 20+ bridges and 20+ DEX aggregators to find the best path for your swap — optimizing for price, speed, and reliability.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-icon">&#8644;</div>
+                <h3>Any-to-Any Execution</h3>
+                <p>Swap any token on any chain to any other token on any chain. Single transaction, no manual bridging steps. Works for stablecoins, ETH, RWAs, and more.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-icon">&#128737;</div>
+                <h3>Auto-Failover</h3>
+                <p>If a bridge goes down or experiences congestion, LI.FI automatically reroutes through alternatives. Your app stays live even when bridges don't.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Built for Scale and Reliability</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-dot"></div>
+                <div>
+                    <h3>20+ Bridge Aggregation</h3>
+                    <p>Access liquidity from Stargate, Across, Hop, Connext, Celer, and more — all through one unified API.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-dot" style="background:var(--color-pink)"></div>
+                <div>
+                    <h3>20+ DEX Aggregators</h3>
+                    <p>On-chain swaps routed through 1inch, ParaSwap, 0x, and other top aggregators for best execution on every chain.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-dot"></div>
+                <div>
+                    <h3>Gas-Optimized Routing</h3>
+                    <p>Smart routing factors in gas costs across all chains to deliver the true best price, not just the lowest quote.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-dot" style="background:var(--color-pink)"></div>
+                <div>
+                    <h3>Automatic Rerouting</h3>
+                    <p>If a bridge fails, LI.FI reroutes in real-time. Zero downtime for your integration, even during bridge outages.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-dot"></div>
+                <div>
+                    <h3>Transaction Tracking</h3>
+                    <p>Full lifecycle tracking for every cross-chain transfer. Monitor status, confirmations, and completion in real time.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-dot" style="background:var(--color-pink)"></div>
+                <div>
+                    <h3>RWA & Stablecoin Support</h3>
+                    <p>Native support for stablecoins and tokenized real-world assets across all connected chains and bridges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="chains-section" id="chains">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Supported Chains</span>
+            <h2 class="section-title">60+ Blockchains Connected</h2>
+            <p class="section-subtitle">From Ethereum and Solana to Bitcoin and the latest L2s — LI.FI covers every major chain.</p>
+        </div>
+        <div class="chains-flex">
+            <span class="chain-pill">Ethereum</span>
+            <span class="chain-pill">Solana</span>
+            <span class="chain-pill">Arbitrum</span>
+            <span class="chain-pill">BNB Chain</span>
+            <span class="chain-pill">Base</span>
+            <span class="chain-pill">Polygon</span>
+            <span class="chain-pill">Optimism</span>
+            <span class="chain-pill">Avalanche</span>
+            <span class="chain-pill">zkSync</span>
+            <span class="chain-pill">Linea</span>
+            <span class="chain-pill">Metis</span>
+            <span class="chain-pill">Bitcoin</span>
+            <span class="chain-pill">Fantom</span>
+            <span class="chain-pill">Scroll</span>
+            <span class="chain-pill">Mantle</span>
+            <span class="chain-pill">Mode</span>
+            <span class="chain-pill">Gnosis</span>
+            <span class="chain-pill">Celo</span>
+            <span class="chain-pill">+42 more</span>
+        </div>
+    </div>
+</section>
+
+<section class="dev-section" id="developers">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">For Developers</span>
+            <h2 class="section-title">Integrate in Hours, Not Months</h2>
+            <p class="section-subtitle">Choose your integration path — SDK, API, or drop-in widget. Save hundreds of developer hours.</p>
+        </div>
+        <div class="dev-grid">
+            <div class="dev-card">
+                <h3>JavaScript SDK</h3>
+                <p>Full TypeScript SDK with transaction management, smart contract interaction, and optimal route discovery built in.</p>
+                <span class="dev-tag">npm install @lifi/sdk</span>
+            </div>
+            <div class="dev-card">
+                <h3>REST API</h3>
+                <p>Language-agnostic REST API for server-side integrations. One endpoint returns the optimal cross-chain route.</p>
+                <span class="dev-tag">GET /v1/quote</span>
+            </div>
+            <div class="dev-card">
+                <h3>Embeddable Widget</h3>
+                <p>Drop a pre-built swap widget into any dApp with minimal code. Fully customizable styling and chain selection.</p>
+                <span class="dev-tag">&lt;lifi-widget /&gt;</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">What is LI.FI and how does the LIFI Bridge work?</button>
+                <div class="faq-answer"><p>LI.FI is a cross-chain bridge and DEX aggregator that connects over 20 bridges and decentralized exchanges across 60+ blockchains. The LIFI Bridge finds the most efficient route for your tokens, combining bridges and DEXs to let you swap assets between different chains in a single transaction.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Which chains are supported?</button>
+                <div class="faq-answer"><p>LIFI Bridge supports more than 60 blockchains, including Ethereum, Solana, Arbitrum, BNB Chain, Base, Polygon, and Bitcoin. This coverage allows users to transfer and swap assets across nearly every major chain in the ecosystem.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How does smart routing work?</button>
+                <div class="faq-answer"><p>LIFI Bridge uses smart routing algorithms to analyze available bridges and DEXs and select the optimal path based on price, speed, and reliability. If a bridge becomes unavailable, the system automatically reroutes to complete your swap with minimal disruption.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is using LIFI Bridge safe?</button>
+                <div class="faq-answer"><p>LIFI Bridge uses audited smart contracts and auto-failover mechanisms. The protocol has processed over $80 billion in volume across 100 million+ transfers. As with any cross-chain tool, review risks and connect only with trusted wallets.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Does LI.FI offer developer tools?</button>
+                <div class="faq-answer"><p>Yes — LI.FI provides a JavaScript SDK, REST API, and embeddable widget for easy integration. These tools give developers direct access to cross-chain routing, transaction management, and customizable swap interfaces.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Who uses LI.FI?</button>
+                <div class="faq-answer"><p>Over 600 integration partners use LI.FI, including leading DeFi protocols, wallets, and exchanges. Projects choose LIFI Bridge for reliable cross-chain swaps, broad chain support, and flexible developer integration.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Go Cross-Chain?</h2>
+        <p>Integrate LI.FI and give your users access to 60+ chains, 20+ bridges, and the best prices in DeFi.</p>
+        <a href="CTA_LINK" class="btn-primary">Start Your Integration</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="https://lifi-bridge.github.io/" class="nav-logo"><span class="nav-logo-icon">&#10004;</span> LI.FI</a>
+                <p>Universal cross-chain bridge and DEX aggregator. 60+ chains, 20+ bridges, one integration.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <a href="#how">Bridge Aggregator</a>
+                <a href="#features">Smart Routing</a>
+                <a href="#developers">SDK & API</a>
+                <a href="#chains">Supported Chains</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="#faq">FAQ</a>
+                <a href="https://docs.li.fi" target="_blank" rel="noopener noreferrer">Documentation</a>
+                <a href="https://github.com/lifinance" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <a href="SOCIAL_URL_TWITTER" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="SOCIAL_URL_DISCORD" target="_blank" rel="noopener noreferrer">Discord</a>
+                <a href="SOCIAL_URL_TELEGRAM" target="_blank" rel="noopener noreferrer">Telegram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 LI.FI. All rights reserved.</span>
+            <span>Universal Market Access</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelector('.hamburger').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('active')});
+document.querySelectorAll('.faq-question').forEach(function(b){b.addEventListener('click',function(){var i=this.parentElement;document.querySelectorAll('.faq-item').forEach(function(o){if(o!==i)o.classList.remove('active')});i.classList.toggle('active')})});
+document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('active')})});
+</script>
+
+</body>
+</html>
